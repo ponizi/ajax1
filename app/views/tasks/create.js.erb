@@ -1,0 +1,6 @@
+document.getElementById("task-list<%=@task.category_id%>").insertAdjacentHTML("beforeend", "<%= j render 'newtask', task: @task %>")
+
+
+var box = document.getElementById("box_<%= @task.id %>")
+var text = document.getElementById("task<%= @task.id %>")
+box.onclick = text.style.textDecoration='line-through'
