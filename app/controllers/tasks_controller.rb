@@ -9,9 +9,9 @@ before_action :authenticate_user!
     @category = Category.find(category_params)
     @task.category = @category
     if @task.save
-      flash[:notice] = "Bonjour"
+      flash[:notice] = ""
     else
-      flash[:notice] = redirect_to home_path
+      flash[:notice] = "Données incomplètes"
     end
     respond_to do |format|
       format.html { redirect_to root_path }

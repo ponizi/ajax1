@@ -7,9 +7,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2">
             <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Mail <span class="caret"></span>
-                </button>
+                <%= button_to "Recevoir email", email_index_path, method: :post, remote: true, class: "btn btn-primary"%>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="#">Mail</a></li>
                     <li><a href="#">Contacts</a></li>
@@ -67,38 +65,32 @@
     </div>
     <hr />
     <div class="row">
-        <div class="col-sm-3 col-md-2">
-            <a href="#" class="btn btn-danger btn-sm btn-block" role="button">COMPOSE</a>
-            <hr />
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><span class="badge pull-right">42</span> Inbox </a>
-                </li>
-                <li><a href="http://www.jquery2dotnet.com">Starred</a></li>
-                <li><a href="http://www.jquery2dotnet.com">Important</a></li>
-                <li><a href="http://www.jquery2dotnet.com">Sent Mail</a></li>
-                <li><a href="http://www.jquery2dotnet.com"><span class="badge pull-right">3</span>Drafts</a></li>
-            </ul>
-        </div>
+    <div class="col-sm-3 col-md-2">
+    Visionneuse
+    <div id="leftcol">
+</div>
+    
+</div>
         <div class="col-sm-9 col-md-10">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
-                </span>Principale</a></li>
-                <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-user"></span>
-                    Social</a></li>
-                <li><a href="#messages" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>
-                    Promotions</a></li>
-                <li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-plus no-margin">
-                </span></a></li>
-            </ul>
-            <% @emails.each do  |email|%>
-            <!-- Tab panes -->
 
+            <ul id="emailist">
+            <% @emails.each do |email|%>
+              <div id = "em<%=email.id%>">
+            <%= link_to email_path(email.id), remote: true, class:"list-group-item" do%>
 
- <a href="#" class="list-group-item justify-content-between">
                     <input type="checkbox">
-                    
-                <% end %>
+          <% if email.status == false %>
+              <b><%= email.object %> -</b>
+             <small> <%= email.body[0,100] %></small>
+          
+          <% else %>
+          <%= email.object %> -
+          <small> <%= email.body[0,100] %></small><% end %>
+
+
+
+              <% end %></div><%end%></ul>
 
 
 
@@ -107,8 +99,16 @@
 
 
             </div>
+            
         </div>
 
     </div>
+
+
+
+
+
+
+    
 </div>
 

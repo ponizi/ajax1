@@ -1,0 +1,7 @@
+document.getElementById("leftcol").insertAdjacentHTML("afterbegin", "<%= j render 'show', email: @email %>");
+var a = document.getElementById("em<%= @email.id %>").children[0].children[1];
+var b = a.parentNode;
+while(a.firstChild) b.insertBefore(a.firstChild, a);
+
+
+
